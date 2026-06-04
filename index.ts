@@ -40,9 +40,6 @@ import {
   type FileChangeItem,
   type ReasoningItem,
 } from "@openai/codex-sdk";
-import { z } from "zod";
-import { zodToSchema } from "./src/zodToSchema.js";
-
 // ============================================================================
 // Constants
 // ============================================================================
@@ -54,19 +51,23 @@ const DEFAULT_APPROVAL_POLICY = "on-failure";
 const OUTCOME_REGEX = /OUTCOME:\s*(.+?)\s*(?:\n|$)/i;
 
 // ============================================================================
-// Zod schemas
+// Schema definitions
 // ============================================================================
 
-const ConfigSchema = z.object({
-  model: z.string().optional().describe(`Model to use (default: ${DEFAULT_MODEL})`),
-  sandbox_mode: z.string().optional().describe("Sandbox mode: read-only, workspace-write, danger-full-access (default: workspace-write)"),
-  approval_policy: z.string().optional().describe("Approval policy: never, on-request, on-failure, untrusted (default: on-failure)"),
-  working_directory: z.string().optional().describe("Working directory for the agent (default: current directory)"),
-});
+const ConfigSchema = {
+  fields: {
+    model: { type: "string", required: false, description: `Model to use (default: ${DEFAULT_MODEL})` },
+    sandbox_mode: { type: "string", required: false, description: "Sandbox mode: read-only, workspace-write, danger-full-access (default: workspace-write)" },
+    approval_policy: { type: "string", required: false, description: "Approval policy: never, on-request, on-failure, untrusted (default: on-failure)" },
+    working_directory: { type: "string", required: false, description: "Working directory for the agent (default: current directory)" },
+  },
+};
 
-const InputSchema = z.object({
-  prompt: z.string().describe("The prompt to send to Codex"),
-});
+const InputSchema = {
+  fields: {
+    prompt: { type: "string", required: true, description: "The prompt to send to Codex" },
+  },
+};
 
 // ============================================================================
 // Event Helpers
@@ -290,8 +291,8 @@ export const adapterConfig: ServeConfig = {
   capabilities: ["multi_turn", "structured_events"],
   platforms: ["linux/amd64", "linux/arm64", "darwin/arm64"],
 
-  config_schema: zodToSchema(ConfigSchema),
-  input_schema: zodToSchema(InputSchema),
+  config_schema: ConfigSchema,
+  input_schema: InputSchema,
   output_schema: undefined,
 
   secrets: [

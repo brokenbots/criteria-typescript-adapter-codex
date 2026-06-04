@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@criteria/adapter-sdk": "file:../criteria-typescript-adapter-sdk",
-    "@openai/codex-sdk": "^0.128.0",
-    "zod": "^3.24.0"
+    "@openai/codex-sdk": "^0.128.0"
   }
 }

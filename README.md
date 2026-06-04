@@ -113,7 +113,7 @@ The adapter interfaces with the Codex CLI via the `@openai/codex-sdk` using the 
 
 To modify the adapter:
 
-1. Edit `index.ts` or `src/zodToSchema.ts`
+1. Edit `index.ts`
 2. Rebuild: `bun run build`
 3. Run tests: `bun test`
 4. Test with `criteria apply`
