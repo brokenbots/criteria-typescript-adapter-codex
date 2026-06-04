@@ -2,6 +2,7 @@
 node_modules/
 
 # Build artifacts
+out/
 criteria-adapter-codex
 
 # Logs

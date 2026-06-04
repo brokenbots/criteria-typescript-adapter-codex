@@ -3,11 +3,11 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "build": "bun build --compile index.ts --outfile criteria-adapter-codex",
-    "build:linux-x64": "bun build --compile --target=bun-linux-x64 index.ts --outfile criteria-adapter-codex",
-    "build:linux-arm64": "bun build --compile --target=bun-linux-arm64 index.ts --outfile criteria-adapter-codex",
-    "build:darwin-arm64": "bun build --compile --target=bun-darwin-arm64 index.ts --outfile criteria-adapter-codex",
-    "clean": "rm -f criteria-adapter-codex",
+    "build": "bun build --compile index.ts --outfile out/adapter",
+    "build:linux-x64": "bun build --compile --target=bun-linux-x64 index.ts --outfile out/adapter-linux-amd64",
+    "build:linux-arm64": "bun build --compile --target=bun-linux-arm64 index.ts --outfile out/adapter-linux-arm64",
+    "build:darwin-arm64": "bun build --compile --target=bun-darwin-arm64 index.ts --outfile out/adapter-darwin-arm64",
+    "clean": "rm -rf out/",
     "test": "bun test"
   },
   "dependencies": {
