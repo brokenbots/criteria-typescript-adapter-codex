@@ -1,0 +1,18 @@
+{
+  "name": "criteria-adapter-codex",
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "bun build --compile index.ts --outfile criteria-adapter-codex",
+    "build:linux-x64": "bun build --compile --target=bun-linux-x64 index.ts --outfile criteria-adapter-codex",
+    "build:linux-arm64": "bun build --compile --target=bun-linux-arm64 index.ts --outfile criteria-adapter-codex",
+    "build:darwin-arm64": "bun build --compile --target=bun-darwin-arm64 index.ts --outfile criteria-adapter-codex",
+    "clean": "rm -f criteria-adapter-codex",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@criteria/adapter-sdk": "file:../criteria-typescript-adapter-sdk",
+    "@openai/codex-sdk": "^0.128.0",
+    "zod": "^3.24.0"
+  }
+}
