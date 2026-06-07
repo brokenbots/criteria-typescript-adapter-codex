@@ -8,10 +8,16 @@
     "build:linux-arm64": "bun build --compile --target=bun-linux-arm64 index.ts --outfile out/adapter-linux-arm64",
     "build:darwin-arm64": "bun build --compile --target=bun-darwin-arm64 index.ts --outfile out/adapter-darwin-arm64",
     "clean": "rm -rf out/",
-    "test": "bun test"
+    "test": "bun test",
+    "vuln-scan": "osv-scanner scan source --config=osv-scanner.toml -r .",
+    "deps:outdated": "bun outdated"
   },
   "dependencies": {
     "@criteria/adapter-sdk": "file:../criteria-typescript-adapter-sdk",
     "@openai/codex-sdk": "^0.128.0"
+  },
+  "overrides": {
+    "brace-expansion": "^5.0.6",
+    "protobufjs": "^7.5.8"
   }
 }
