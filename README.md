@@ -117,3 +117,29 @@ To modify the adapter:
 2. Rebuild: `bun run build`
 3. Run tests: `bun test`
 4. Test with `criteria apply`
+
+## Outputs
+
+This adapter emits no flat output keys. The step **outcome** is set by the model
+calling `submit_outcome(outcome, reason)` and validated against the step's
+declared outcomes; agent messages, reasoning, and command executions are emitted
+as structured events for observability.
+
+## Security & dependencies
+
+Supply-chain controls and the dependency-freshness policy are documented in
+[SECURITY.md](SECURITY.md) and [docs/dependency-policy.md](docs/dependency-policy.md).
+Reproduce the CI security checks locally:
+
+```bash
+bun run vuln-scan      # osv-scanner — blocking known-vulnerability gate (reads bun.lock)
+bun run deps:outdated  # bun outdated — freshness report
+```
+
+## Publish (multi-platform)
+
+Tagging `vX.Y.Z` cross-compiles `linux/amd64`, `linux/arm64`, and `darwin/arm64`
+(`bun build --compile --target=…`) and publishes them as a single multi-platform,
+signed OCI artifact to `ghcr.io/brokenbots/criteria-adapter-codex:X.Y.Z` via
+[`brokenbots/publish-adapter`](https://github.com/brokenbots/publish-adapter).
+Pin and lock it in your workflow with `criteria adapter lock`.

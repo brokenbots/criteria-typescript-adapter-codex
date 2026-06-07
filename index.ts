@@ -287,7 +287,7 @@ export const adapterConfig: ServeConfig = {
   name: "codex",
   version: "0.5.0",
   description: "OpenAI Codex adapter for Criteria workflows",
-  source_url: "https://github.com/criteria-adapters/codex",
+  source_url: "https://github.com/brokenbots/criteria-typescript-adapter-codex",
   capabilities: ["multi_turn", "structured_events"],
   platforms: ["linux/amd64", "linux/arm64", "darwin/arm64"],
 
